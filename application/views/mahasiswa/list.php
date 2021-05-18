@@ -23,13 +23,6 @@
   </div>
   <?php } ?>
 </div>
-<div class="py-0">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12"><a class="btn btn-success" href="<?php echo base_url('Mahasiswa/add_mhs'); ?>"><i class="fa fa-plus"></i>&ensp;Tambah Mahasiswa</a></div>
-    </div>
-  </div>
-</div>
 <div class="py-4">
   <div class="container">
     <div class="row">

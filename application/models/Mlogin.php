@@ -6,7 +6,7 @@ class Mlogin extends CI_Model {
   }
 
   public function auth($user,$pass){
-    $query = $this->db->where("NIP_DOSEN", $user)->where("PASS_DOSEN", $pass)->get("dosen");
+    $query = $this->db->query("SELECT * FROM dosen WHERE EMAIL_DOSEN = '".$user."' AND PASS_DOSEN = '".$pass."'");
     return $query->result();
   }
 

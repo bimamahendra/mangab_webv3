@@ -52,13 +52,14 @@
                 <tr>
                   <td class="text-left"><?php echo $absen->NAMA_DOSEN; ?></td>
                   <td class="text-left"><?php echo $absen->NAMA_MATKUL; ?></td>
-                  <td class="text-left"><?php echo $absen->TOPIK; ?></td>
+                  <td class="text-left"><?php echo $absen->TOPIK_ABSEN; ?></td>
+                  <td class="text-left"><?php echo $absen->METODE_ABSEN; ?></td>
                   <td class="text-center"><?php echo $absen->TS_ABSEN; ?></td>
-                  <?php if($absen->STATUS_ABSEN == 1){?>
+                  <!-- <?php if($absen->STATUS_ABSEN == 0){?>
                     <td class="text-center"><a href="<?= base_url('Absen/verif/' . $absen->ID_ABSEN) ?>" class="btn btn-sm btn-primary">Verification</a></td>
                   <?php } else { ?>
                     <td class="text-center"><a class="btn btn-sm btn-success" style="color:white">Verified</a></td>
-                  <?php } ?>
+                  <?php } ?> -->
                   <td class="text-center">
                     <a href="<?= base_url('Absen/det_absen/' . $absen->ID_ABSEN) ?>"><i class="fa fa-bars text-secondary"></i></a>
                     <a href="#" data-toggle="modal" data-target="#ModalDelete" data-id="<?php echo $absen->ID_ABSEN; ?>"

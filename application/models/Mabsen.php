@@ -6,7 +6,11 @@ class Mabsen extends CI_Model {
   }
 
   public function getAllAbsen(){
-    $query = $this->db->query("SELECT absen.ID_ABSEN, dosen.NAMA_DOSEN, matkul.NAMA_MATKUL, matkul.KELAS_MATKUL, absen.TOPIK, absen.TS_ABSEN, absen.STATUS_ABSEN FROM dosen JOIN matkul ON dosen.NIP_DOSEN = matkul.NIP_DOSEN JOIN absen ON matkul.ID_MATKUL = absen.ID_MATKUL WHERE absen.STATUS_ABSEN = 1 OR absen.STATUS_ABSEN = 2 ORDER BY (ID_ABSEN) DESC");
+    $query = $this->db->query("SELECT absen.ID_ABSEN, dosen.NAMA_DOSEN, matakuliah.NAMA_MATKUL, absen.TOPIK_ABSEN, absen.METODE_ABSEN, absen.TS_ABSEN, absen.STATUS_ABSEN FROM absen
+    JOIN jadwal ON absen.ID_JADWAL = jadwal.ID_JADWAL
+    JOIN pertemuan ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
+    JOIN matakuliah ON matakuliah.KODE_MATKUL = pertemuan.KODE_MATKUL
+    JOIN dosen ON dosen.NIP_DOSEN = absen.NIP_DOSEN");
     return $query->result();
   }
 
@@ -16,12 +20,16 @@ class Mabsen extends CI_Model {
   }
 
   public function getAbsen($id){
-    $query = $this->db->query("SELECT absen.ID_ABSEN, mahasiswa.NRP_MHS, mahasiswa.NAMA_MHS, detail_absen.STATUS_DETABSEN, detail_absen.TS_DETABSEN FROM absen JOIN detail_absen ON absen.ID_ABSEN = detail_absen.ID_ABSEN JOIN mahasiswa ON detail_absen.NRP_MHS = mahasiswa.NRP_MHS WHERE detail_absen.ID_ABSEN = '".$id."' ORDER BY (detail_absen.NRP_MHS) ASC");
+    $query = $this->db->query("SELECT absen.ID_ABSEN, detail_absen.GET_NRP, mahasiswa.NAMA_MHS, detail_absen.STATUS_DETABSEN, detail_absen.TS_DETABSEN FROM absen
+    JOIN detail_absen ON absen.ID_ABSEN = detail_absen.ID_ABSEN
+    JOIN mahasiswa ON detail_absen.GET_NRP = mahasiswa.NRP_MHS
+    WHERE detail_absen.ID_ABSEN = '".$id."'
+    ORDER BY (detail_absen.GET_NRP) ASC");
     return $query->result();
   }
 
   public function getNote($id){
-    $query = $this->db->query("SELECT NOTE FROM absen WHERE ID_ABSEN = '".$id."'");
+    $query = $this->db->query("SELECT NOTE_ABSEN FROM absen WHERE ID_ABSEN = '".$id."'");
     return $query->result();
   }
 

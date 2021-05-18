@@ -23,11 +23,6 @@ class Mmhs extends CI_Model {
     return $this->db->affected_rows();
   }
 
-  public function reset($nrp){
-    $this->db->query("UPDATE mahasiswa SET PASS_MHS = 'stikimalang', ID_DEVICE = NULL, STATUS_LOGIN = 0, STATUS_PASS = 0, LAST_LOGOUT = NULL WHERE NRP_MHS = ".$nrp." ");
-    return $this->db->affected_rows();
-  }
-
   public function delete($nrp){
     $this->db->where('NRP_MHS', $nrp)->delete('mahasiswa');
     return $this->db->affected_rows();

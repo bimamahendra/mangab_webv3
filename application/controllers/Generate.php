@@ -21,6 +21,7 @@ class Generate extends CI_Controller {
 
 	//generate QR Code kelas
 	public function generate(){
+		$nip = $this->session->userdata('nip');
 		$sixdigit 	= $this->sixdigit();
 		$id 		= $this->input->post('id');
 		$topik 		= $this->input->post('topik');
@@ -50,22 +51,28 @@ class Generate extends CI_Controller {
 	    $this->ciqrcode->generate($params); // fungsi untuk generate QR CODE
 
 	    $datakelas = array(
-	    	"ID_ABSEN" => $sixdigit,
-	    	"ID_MATKUL" => $id,
-	    	"TOPIK" => $topik,
-			"TS_ABSEN" => $now,
-			"JENIS_ABSEN" => $jenis,
-			"LONG_ABSEN" => $long,
-			"LAT_ABSEN" => $lat,
-	    	"STATUS_ABSEN" => 0
+	    	"ID_ABSEN" 		=> $sixdigit,
+	    	"ID_JADWAL" 	=> $id,
+			"NIP_DOSEN"		=> $nip,
+			"PERTEMUAN_KE"	=> $this->pertemuanke($id),
+	    	"TOPIK_ABSEN"	=> $topik,
+			"METODE_ABSEN"	=> $topik,
+			"TS_ABSEN" 		=> $now,
+			"JENIS_ABSEN" 	=> $jenis,
+			"LONG_ABSEN" 	=> $long,
+			"LAT_ABSEN" 	=> $lat,
+	    	"STATUS_ABSEN" 	=> 0
 	    );
 	 		$getmhs = $this->Mgenerate->getmhs($id);
+
+		$inputkelas = $this->Mgenerate->saveqr($datakelas);
 
 	 		$detailAbsenMhs = array();
 
 	 		foreach($getmhs as $mhs){
+				$dataDetailAbsen["ID_DETABSEN"] = $this->serial_meeting();
 	 			$dataDetailAbsen["ID_ABSEN"] = $sixdigit;
-				$dataDetailAbsen["NRP_MHS"] = $mhs["nrp"];
+				$dataDetailAbsen["GET_NRP"] = $mhs["NRP_MHS"];
 				$dataDetailAbsen["STATUS_DETABSEN"] = 0;
 				$dataDetailAbsen["TS_DETABSEN"] = null;
 
@@ -73,8 +80,6 @@ class Generate extends CI_Controller {
 	 		}
 
 	 		$inputMhs = $this->Mgenerate->savedet($detailAbsenMhs);
-
-	    $inputkelas = $this->Mgenerate->saveqr($datakelas);
 
 	    if($inputkelas && ($inputMhs > 0 ) ){
 	    	redirect('Generate/showqr/'.$sixdigit); 
@@ -91,6 +96,17 @@ class Generate extends CI_Controller {
 		$cek = $this->Mgenerate->cekrand($randomdigit);
 		if( $cek > 0){
 			$this->sixdigit();
+		}else{
+			return $randomdigit;
+		}
+	}
+
+	public function serial_meeting(){
+		$randomdigit = random_string('alnum',16);
+
+		$cek = $this->Mgenerate->cekserial($randomdigit);
+		if( $cek > 0){
+			$this->serial_meeting();
 		}else{
 			return $randomdigit;
 		}
@@ -165,5 +181,11 @@ class Generate extends CI_Controller {
 			redirect('Generate/changepw');
 			}
 		}
+	}
+
+	public function pertemuanke($id){
+		$cekrow = $this->Mgenerate->sumJadwal($id);
+
+		return $cekrow + 1;
 	}
 }

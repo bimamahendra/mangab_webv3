@@ -15,9 +15,9 @@
        
         <div class="col-md-4" style="margin-bottom: 20px">
             <div class="card text-center">
-                <div class="card-header text-white bg-success" ><?php echo $row->NAMA_MATKUL." | ".$row->KELAS_MATKUL ?></div>
+                <div class="card-header text-white bg-success" ><?php echo $row->KODE_MATKUL?></div>
                 <div class="card-body">
-                    <div class="card-title"><h4><?php echo $row->jumlah ?></h4> <h3> / 14 </h3></div>
+                    <div class="card-title"><h4><?php echo $row->NAMA_MATKUL ?></h4> <h3> | <?php echo $row->KELAS_PRTMN ?> </h3></div>
                 </div>
             </div>
         </div>

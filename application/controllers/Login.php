@@ -11,21 +11,23 @@ class Login extends CI_Controller {
 	//login auth
 	public function index(){
 		$user = $this->input->post('username');
-		$pass = hash('sha256', md5($this->input->post('password')));
-		// var_dump($pass);
-		// exit();
-		$auth = $this->Mlogin->auth($user, $pass);
+		$pass = $this->input->post('password');
 
 		if($user === "admin" && $pass === "admins4ishoku"){
 			$session = array(
-        'who' => "admin",
-        'isLogin' => true,
-        'isDosen' => false
-      );
+				'who' => "admin",
+				'isLogin' => true,
+				'isDosen' => false
+				);
 			$this->session->set_userdata($session);
 			redirect('Welcome');
 
-		}else if($auth != null){
+		}
+
+		$pass = hash('sha256', md5($pass));
+		$auth = $this->Mlogin->auth($user, $pass);
+
+		if($auth != null){
 			foreach($auth as $row){
 				$nip = $row->NIP_DOSEN;
 				$nama = $row->NAMA_DOSEN;

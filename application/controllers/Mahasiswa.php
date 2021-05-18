@@ -15,40 +15,6 @@ class Mahasiswa extends CI_Controller {
 		$this->load->view('dashboard', $param);
 	}
 
-	public function add_mhs(){
-		$param['main_content'] = 'mahasiswa/add';
-		$param['page_title'] = 'Tambahkan Mahasiswa';
-		$this->load->view('dashboard', $param);
-	}
-
-	public function create(){
-		$nrp 	= $this->input->post('nrp');
-		$nama = $this->input->post('nama');
-		$email = $this->input->post('email');
-		if (empty($nrp) || empty($nama) || empty($email)) {
-			$this->session->set_flashdata('error_message', 'Harap masukkan data dengan benar!');
-			redirect('Mahasiswa/add_mhs');
-		} else {
-			$data = [
-				'NRP_MHS' => $nrp, 
-				'PASS_MHS' => "stikimalang",
-				'NAMA_MHS' => $nama,
-				'EMAIL_MHS' => $email,
-				'STATUS_LOGIN' => '0',
-				'STATUS_PASS' => '0',
-			];
-			$cek = $this->Mmhs->insert($data);
-			if($cek){
-				$this->session->set_flashdata('success_message', 'Data mahasiswa berhasil ditambahkan');
-				redirect('Mahasiswa');
-			}else{
-				$this->session->set_flashdata('error_message', 'Terjadi kesalahan dalam menambahkan data!');
-				redirect('Mahasiswa/add_mhs');
-			}
-
-		}
-	}
-
 	public function edit_mhs($nrp){
 		$data['main_content'] = 'mahasiswa/edit';
 		$data['page_title'] = 'Edit Data Mahasiswa';
@@ -73,7 +39,14 @@ class Mahasiswa extends CI_Controller {
 				];
 				$this->Mmhs->update($nrp, $data);
 				if($reset == "on"){
-					$this->Mmhs->reset($nrp);
+					$data = [
+						'PASS_MHS' 		=> hash('sha256', md5('stikimalang')), 
+						'DEVICE_MHS'	=> NULL,
+						'STATUS_LOGIN'	=> 0,
+						'STATUS_PASS'	=> 0,
+						'LAST_LOGOUT'	=> NULL
+						];
+					$this->Mmhs->update($nrp, $data);
 				}
 
 				$this->session->set_flashdata('success_message', 'Data mahasiswa berhasil diubah');

@@ -6,12 +6,21 @@ class Mgenerate extends CI_Model {
   }
 
   public function stats($nip){
-  	$query = $this->db->query('SELECT matkul.NAMA_MATKUL, matkul.KELAS_MATKUL, COUNT(matkul.ID_MATKUL) AS jumlah FROM absen JOIN matkul ON absen.ID_MATKUL = matkul.ID_MATKUL WHERE matkul.NIP_DOSEN = '.$nip.' GROUP BY matkul.ID_MATKUL');
+  	$query = $this->db->query("SELECT * FROM pengampu
+    JOIN pertemuan ON pengampu.ID_PRTMN = pertemuan.ID_PRTMN
+    JOIN jadwal ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
+    JOIN matakuliah ON pertemuan.KODE_MATKUL = matakuliah.KODE_MATKUL
+    WHERE pengampu.NIP_DOSEN = '".$nip."'");
   	return $query->result();
   }
 
   public function getAllMatkulByNIP($nip){
-  	return $this->db->where('NIP_DOSEN', $nip)->get('matkul')->result();
+  	$query = $this->db->query("SELECT * FROM pengampu
+    JOIN pertemuan ON pengampu.ID_PRTMN = pertemuan.ID_PRTMN
+    JOIN jadwal ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
+    JOIN matakuliah ON pertemuan.KODE_MATKUL = matakuliah.KODE_MATKUL
+    WHERE pengampu.NIP_DOSEN = '".$nip."'");
+    return $query->result();
   }
 
   public function getMatkulByID($id){
@@ -27,13 +36,17 @@ class Mgenerate extends CI_Model {
   	return $this->db->query("SELECT ID_ABSEN FROM absen WHERE ID_ABSEN = '.$rand.'")->num_rows();
   }
 
+  public function cekserial($rand){
+  	return $this->db->query("SELECT ID_DETABSEN FROM detail_absen WHERE ID_DETABSEN = '.$rand.'")->num_rows();
+  }
+
   public function saveqr($data){
   	$query = $this->db->insert("absen",$data);
   	return TRUE;
   }
 
   public function getmhs($id){
-  	$query = $this->db->query("SELECT a.NRP_MHS as nrp, b.NAMA_MHS as nama, b.EMAIL_MHS as email FROM ambilmk a JOIN mahasiswa b ON b.NRP_MHS = a.NRP_MHS WHERE a.ID_MATKUL = '".$id."' ");
+  	$query = $this->db->query("SELECT DISTINCT * FROM mahasiswa JOIN perwalian ON mahasiswa.NRP_MHS = perwalian.NRP_MHS WHERE perwalian.ID_JADWAL = '".$id."'");
   	return $query->result_array();
   }
 
@@ -43,7 +56,7 @@ class Mgenerate extends CI_Model {
   }
 
   public function getkelas($qr){
-    return $this->db->query("SELECT a.NRP_MHS as nrp, b.NAMA_MHS as nama, b.EMAIL_MHS as email, a.STATUS_DETABSEN as status_absen FROM detail_absen a JOIN mahasiswa b ON b.NRP_MHS = a.NRP_MHS WHERE a.ID_ABSEN = '".$qr."' ")->result();
+    return $this->db->query("SELECT * FROM mahasiswa JOIN detail_absen ON mahasiswa.NRP_MHS = detail_absen.GET_NRP WHERE detail_absen.ID_ABSEN = '".$qr."'")->result();
   }
 
   public function getjmlmhs($qr){
@@ -105,6 +118,10 @@ class Mgenerate extends CI_Model {
   	$nip = $this->session->userdata('nip');
   	$this->db->query('UPDATE dosen SET PASS_DOSEN = "'.$pass.'" WHERE NIP_DOSEN = "'.$nip.'"');
   	return TRUE;
+  }
+
+  public function sumJadwal($id){
+    return $this->db->get_where('absen', array('ID_JADWAL' => $id))->num_rows();
   }
 
 }

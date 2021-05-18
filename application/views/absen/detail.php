@@ -48,7 +48,7 @@
               <?php $i = 1;
               foreach ($detail_list as $detail){ ?>
                 <tr>
-                  <td class="text-center"><?php echo $detail->NRP_MHS; ?></td>
+                  <td class="text-center"><?php echo $detail->GET_NRP; ?></td>
                   <td class="text-left"><?php echo $detail->NAMA_MHS; ?></td>
                   <?php if($detail->STATUS_DETABSEN == 0){ ?>
                     <td class="text-center"><a class="btn btn-sm btn-danger text-white">A</a></td>
@@ -67,7 +67,7 @@
         </div>
         <label><b>Note : </b></label>
         <div>
-          <textarea class="col-md-12" rows="5" disabled><?php foreach ($detail_note as $note) {echo $note->NOTE;} ?></textarea>
+          <textarea class="col-md-12" rows="5" disabled><?php foreach ($detail_note as $note) {echo $note->NOTE_ABSEN;} ?></textarea>
         </div>
       </div>
     </div>

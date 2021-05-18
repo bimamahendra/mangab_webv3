@@ -23,13 +23,6 @@
   </div>
   <?php } ?>
 </div>
-<div class="py-0">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12"><a class="btn btn-success" href="<?php echo base_url('Dosen/add_dosen'); ?>"><i class="fa fa-plus"></i>&ensp;Tambah Dosen</a></div>
-    </div>
-  </div>
-</div>
 <div class="py-4">
   <div class="container">
     <div class="row">

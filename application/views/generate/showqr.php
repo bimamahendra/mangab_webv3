@@ -42,9 +42,9 @@
               foreach ($datakelas as $mhs){ ?>
                 <tr>
                   <td class="text-center"><?php echo $i ?></td>
-                  <td class="text-center"><?php echo $mhs->nrp; ?></td>
-                  <td class="text-left"><?php echo $mhs->nama ?></td>
-                  <td class="text-center"><?php echo ($mhs->status_absen == 0) ? "Alpa" : "Hadir"  ?></td>
+                  <td class="text-center"><?php echo $mhs->NRP_MHS; ?></td>
+                  <td class="text-left"><?php echo $mhs->NAMA_MHS ?></td>
+                  <td class="text-center"><?php echo ($mhs->STATUS_DETABSEN == 0) ? "Alpa" : "Hadir"  ?></td>
                 </tr>
               <?php $i++; } ?>
             </tbody>

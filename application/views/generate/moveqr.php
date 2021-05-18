@@ -28,37 +28,32 @@
     <div class="row">
       <div class="col-md-12">
         <div class="table-responsive">
-          <table class="table table-striped table-borderless" id="newstable">
+          <table class="table table-striped table-borderless" id="newstable" style="font-size: 15px">
             <thead>
               <tr>
-                <th class="text-center">No</th>
-                <th class="text-center">Kode Mata Kuliah</th>
-                <th class="text-center">Nama Mata Kuliah  </th>
+                <th class="text-center">Periode</th>
+                <th class="text-center">Kode</th>
+                <th class="text-center">Nama Mata Kuliah</th>
                 <th class="text-center">Kelas</th>
+                <th class="text-center">Hari</th>
+                <th class="text-center">Waktu</th>
+                <th class="text-center">Ruang</th>
                 <th class="text-center">Aksi</th>
               </tr>
             </thead>
             <tbody>
               <?php $i = 1; foreach ($matkul_list as $row) {?>
                 <tr>
-                  <td class="text-center"><?php echo $i ?></td>
+                  <td class="text-center"><?php echo $row->TANGGAL_MULAI.' s/d '.$row->TANGGAL_AKHIR ?></td>
                   <td class="text-center"><?php echo $row->KODE_MATKUL ?></td>
                   <td><?php echo $row->NAMA_MATKUL ?></td>
-                  <td class="text-center"><?php echo $row->KELAS_MATKUL ?></td>
+                  <td class="text-center"><?php echo $row->KELAS_PRTMN ?></td>
+                  <td class="text-center"><?php echo $row->HARI_KELAS ?></td>
+                  <td class="text-center"><?php echo date("H:i", strtotime($row->WAKTU_AWAL)).' - '.date("H:i", strtotime($row->WAKTU_AKHIR)) ?></td>
+                  <td class="text-center"><?php echo $row->RUANG_PRTMN ?></td>
                   <td class="text-center">
-
-                    <a href="<?php echo base_url('Generate/detail/'.$row->ID_MATKUL) ?>" class="btn btn-sm btn-danger"><i class="fa fa-bars"></i> Detail Kelas</a>
-
-                  <?php { if(($cekkelas->cekstatabsen($this->session->userdata('nip'), $row->ID_MATKUL)) != NULL) {
-                      $res = $cekkelas->cekstatabsen($this->session->userdata('nip'), $row->ID_MATKUL);
-                      $tag = 'href="'.base_url("Generate/showqr/$res->ID_ABSEN").'" class="btn btn-sm btn-warning"><i class="fa fa-refresh"></i> Lanjutkan';
-                    }else{
-                      $tag = 'href="#" onclick="getIDKelas('.$row->ID_MATKUL.')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat Kelas';
-                    }
-                  }
-                  ?>
-
-                   <a <?php echo $tag; ?> </a>
+                    <a href="<?php echo base_url('Generate/detail/'.$row->ID_JADWAL) ?>" class="btn btn-sm btn-danger"><i class="fa fa-bars"></i> Detail</a>
+                    <a href="#" onclick="getIDKelas('<?= $row->ID_JADWAL?>')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a>
                   </td>
                 </tr>
               <?php $i++;} ?>
@@ -93,6 +88,10 @@
                   <label class="form-check-label" for="inlineRadio2">Online</label>
             </div>
             <br><br>
+            <i class="fa fa-thumb-tack text-secondary"></i>
+            <label data-error="wrong" data-success="right" for="defaultForm-room">Metode</label>
+            <input type="text" id="metode" name="metode" class="form-control validate">
+            <br>
             <i class="fa fa-thumb-tack text-secondary"></i>
             <label data-error="wrong" data-success="right" for="defaultForm-room">Topik Kelas</label>
             <input type="text" id="topik" name="topik" class="form-control validate">
