@@ -41,7 +41,7 @@ class Mahasiswa extends CI_Controller {
 				if($reset == "on"){
 					$data = [
 						'PASS_MHS' 		=> hash('sha256', md5('stikimalang')), 
-						'DEVICE_MHS'	=> NULL,
+						'ID_DEVICE'	=> NULL,
 						'STATUS_LOGIN'	=> 0,
 						'STATUS_PASS'	=> 0,
 						'LAST_LOGOUT'	=> NULL

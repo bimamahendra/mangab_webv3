@@ -39,12 +39,14 @@ class Auth extends CI_Controller {
     {
         $response = [];
 
-        $nrp = $this->input->post("no_induk");
-        $password = $this->input->post("password");
+        $email = $this->input->post("email");
+        $pass = $this->input->post("password");
         $device_id = $this->input->post("device_id");
+        
+        $password = hash('sha256', md5($pass));
 
-        $isDosenExists = $this->db->where("NIP_DOSEN", $nrp)->get("dosen")->row() != null;
-        $isMhsExists = $this->db->where("NRP_MHS", $nrp)->get("mahasiswa")->row() != null;
+        $isDosenExists = $this->db->where("EMAIL_DOSEN", $email)->get("dosen")->row() != null;
+        $isMhsExists = $this->db->where("EMAIl_MHS", $email)->get("mahasiswa")->row() != null;
 
         if(!$isDosenExists && !$isMhsExists){
             $response["error"] = true;
@@ -53,10 +55,10 @@ class Auth extends CI_Controller {
             return;
         }
 
-        $data = $this->db->where("NIP_DOSEN", $nrp)->where("PASS_DOSEN", $password)->get("dosen")->row();
+        $data = $this->db->where("EMAIL_DOSEN", $email)->where("PASS_DOSEN", $password)->get("dosen")->row();
 
         if($data != null){
-            $update = $this->db->query("UPDATE dosen SET STATUS_LOGIN = 1 WHERE NIP_DOSEN = ".$nrp." ");
+            $update = $this->db->query("UPDATE dosen SET STATUS_LOGIN = 1 WHERE EMAIL_DOSEN = '".$email."' ");
             if($this->db->affected_rows() >= 0){
                 $response["error"] = false;
                 $response["message"] = "Login successful";
@@ -75,7 +77,7 @@ class Auth extends CI_Controller {
             }
         }
         
-        $data = $this->db->where("NRP_MHS", $nrp)->where("PASS_MHS", $password)->get("mahasiswa")->row();
+        $data = $this->db->where("EMAIL_MHS", $email)->where("PASS_MHS", $password)->get("mahasiswa")->row();
         if($data != null){
             $checkDeviceId = $this->db->where("ID_DEVICE", $device_id)->get("mahasiswa")->row();
             if($checkDeviceId != null){
@@ -116,7 +118,7 @@ class Auth extends CI_Controller {
                 return;
             }
 
-            $update = $this->db->query("UPDATE mahasiswa SET STATUS_LOGIN = 1, ID_DEVICE = ".$device_id." WHERE NRP_MHS = ".$nrp." ");
+            $update = $this->db->query("UPDATE mahasiswa SET STATUS_LOGIN = 1, ID_DEVICE = '".$device_id."' WHERE EMAIL_MHS = '".$email."' ");
             if($this->db->affected_rows() > 0){
                 $response["error"] = false;
                 $response["message"] = "Login sukses";
@@ -142,11 +144,11 @@ class Auth extends CI_Controller {
 
     public function logout(){
         $response = [];
-        $nrp = $this->input->post("no_induk");
+        $email = $this->input->post("email");
 
-        $data = $this->db->where("NRP_MHS", $nrp)->get("mahasiswa")->row();
+        $data = $this->db->where("EMAIL_MHS", $email)->get("mahasiswa")->row();
         if($data != null){
-            $update = $this->db->query("UPDATE mahasiswa SET STATUS_LOGIN = 0, LAST_LOGOUT = ".round(microtime(true) * 1000)." WHERE NRP_MHS = ".$nrp." ");
+            $update = $this->db->query("UPDATE mahasiswa SET STATUS_LOGIN = 0, LAST_LOGOUT = ".round(microtime(true) * 1000)." WHERE EMAIL_MHS = '".$email."' ");
             if($this->db->affected_rows() > 0){
                 $response["error"] = false;
                 $response["message"] = "Logout successfully";
@@ -160,9 +162,9 @@ class Auth extends CI_Controller {
             }
         }
 
-        $data = $this->db->where("NIP_DOSEN", $nrp)->get("dosen")->row();
+        $data = $this->db->where("EMAIL_DOSEN", $email)->get("dosen")->row();
         if($data != null){
-            $update = $this->db->query("UPDATE dosen SET STATUS_LOGIN = 0 WHERE NIP_DOSEN = ".$nrp." ");
+            $update = $this->db->query("UPDATE dosen SET STATUS_LOGIN = 0 WHERE EMAIL_DOSEN = '".$email."' ");
             
             if($this->db->affected_rows() > 0){
                 $response["error"] = false;
@@ -185,13 +187,15 @@ class Auth extends CI_Controller {
     public function changePassword(){
         $response = [];
 
-        $noInduk = $this->input->post("no_induk");
+        $email = $this->input->post("email");
         $newPassword = $this->input->post("new_password");
+        
+        $password = hash('sha256', md5($newPassword));
 
-        $data = $this->db->where("NRP_MHS", $noInduk)->get("mahasiswa")->row();
+        $data = $this->db->where("EMAIL_MHS", $email)->get("mahasiswa")->row();
         if($data != null){
-            $update = $this->db->query("UPDATE mahasiswa SET PASS_MHS='".$newPassword."', STATUS_PASS = 1
-            WHERE NRP_MHS =".$noInduk."");
+            $update = $this->db->query("UPDATE mahasiswa SET PASS_MHS='".$password."', STATUS_PASS = 1
+            WHERE EMAIL_MHS = '".$email."'");
             if($this->db->affected_rows() > 0){
                 $response["error"] = false;
                 $response["message"] = "Password has changed";
@@ -205,10 +209,10 @@ class Auth extends CI_Controller {
             }
         }
 
-        $data = $this->db->where("NIP_DOSEN", $noInduk)->get("dosen")->row();
+        $data = $this->db->where("EMAIL_DOSEN", $email)->get("dosen")->row();
         if($data != null){
-            $update = $this->db->query("UPDATE dosen SET PASS_DOSEN ='".$newPassword."', STATUS_PASS = 1
-            WHERE NIP_DOSEN =".$noInduk."");
+            $update = $this->db->query("UPDATE dosen SET PASS_DOSEN ='".$password."', STATUS_PASS = 1
+            WHERE EMAIL_DOSEN = '".$email."'");
             if($this->db->affected_rows() > 0){
                 $response["error"] = false;
                 $response["message"] = "Password has changed";
