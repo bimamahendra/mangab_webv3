@@ -41,7 +41,7 @@
                 <th class="text-center">Dosen</th>
                 <th class="text-center">Mata Kuliah</th>
                 <th class="text-center">Topik</th>
-                <th class="text-center">Waktu</th>
+                <th class="text-center">Metode</th>
                 <th class="text-center">Status</th>
                 <th class="text-center" style="width: 50px">Detail</th>
               </tr>
