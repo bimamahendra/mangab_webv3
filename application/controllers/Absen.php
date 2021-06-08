@@ -10,7 +10,7 @@ class Absen extends CI_Controller {
 
 	public function index(){
 		$param['main_content'] = 'absen/list';
-		$param['page_title'] = 'Daftar Absensi';
+		$param['page_title'] = 'Daftar Perkuliahan';
 		$param['absen_list'] = $this->Mabsen->getAllAbsen();
 		$this->load->view('dashboard', $param);
 	}
