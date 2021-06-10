@@ -6,7 +6,7 @@ class Mdosen extends CI_Model {
   }
 
   public function getAllDosen(){
-    $this->db->ordery_by('NIP_DOSEN','ASC');
+    $this->db->order_by('NIP_DOSEN','ASC');
     return $this->db->get('dosen')->result();
   }
 
