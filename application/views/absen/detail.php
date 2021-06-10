@@ -48,7 +48,7 @@
               <?php $i = 1;
               foreach ($detail_list as $detail){ ?>
                 <tr>
-                  <td class="text-center"><?php echo $detail->GET_NRP; ?></td>
+                  <td class="text-center"><?php echo $detail->NRP_MHS; ?></td>
                   <td class="text-left"><?php echo $detail->NAMA_MHS; ?></td>
                   <?php if($detail->STATUS_DETABSEN == 0){ ?>
                     <td class="text-center"><a class="btn btn-sm btn-danger text-white">A</a></td>
