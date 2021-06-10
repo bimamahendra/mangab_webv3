@@ -20,11 +20,11 @@ class Mabsen extends CI_Model {
   }
 
   public function getAbsen($id){
-    $query = $this->db->query("SELECT absen.ID_ABSEN, detail_absen.GET_NRP, mahasiswa.NAMA_MHS, detail_absen.STATUS_DETABSEN, detail_absen.TS_DETABSEN FROM absen
+    $query = $this->db->query("SELECT absen.ID_ABSEN, detail_absen.NRP_MHS, mahasiswa.NAMA_MHS, detail_absen.STATUS_DETABSEN, detail_absen.TS_DETABSEN FROM absen
     JOIN detail_absen ON absen.ID_ABSEN = detail_absen.ID_ABSEN
-    JOIN mahasiswa ON detail_absen.GET_NRP = mahasiswa.NRP_MHS
+    JOIN mahasiswa ON detail_absen.NRP_MHS = mahasiswa.NRP_MHS
     WHERE detail_absen.ID_ABSEN = '".$id."'
-    ORDER BY (detail_absen.GET_NRP) ASC");
+    ORDER BY (detail_absen.NRP_MHS) ASC");
     return $query->result();
   }
 
