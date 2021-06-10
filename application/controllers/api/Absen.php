@@ -230,7 +230,7 @@ pertemuan.KODE_MATKUL,
             }
 
             $response["error"] = true;
-            $response["message"] = "Empty";
+            $response["message"] = "History is not found";
 
             $this->throw(200, $response);
             return;
@@ -273,7 +273,7 @@ pertemuan.KODE_MATKUL,
             }
 
             $response["error"] = true;
-            $response["message"] = "Empty";
+            $response["message"] = "Summary is not found";
 
             $this->throw(200, $response);
             return;
@@ -317,7 +317,7 @@ pertemuan.KODE_MATKUL,
             }
 
             $response["error"] = true;
-            $response["message"] = "Empty";
+            $response["message"] = "History is not found";
 
             $this->throw(200, $response);
             return;
@@ -364,7 +364,7 @@ pertemuan.KODE_MATKUL,
             }
 
             $response["error"] = true;
-            $response["message"] = "Empty";
+            $response["message"] = "Summary is not found";
 
             $this->throw(200, $response);
             return;
