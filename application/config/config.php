@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 
 #$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
 #$config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
@@ -31,6 +32,11 @@ $config['base_url'] = "https://mangab.my.id";
 
 $config['base_url'] = 'https://mangab.my.id/'
 3
+=======
+$config['base_url'] = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+$config['base_url'] .= "://".$_SERVER['HTTP_HOST'];
+$config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+>>>>>>> 901883fe2173b4130c3d159d9ae3dc3e03e32997
 
 /*
 |--------------------------------------------------------------------------
