@@ -6,6 +6,7 @@ class Mmhs extends CI_Model {
   }
 
   public function getAllMhs(){
+    $this->db->order_by('NRP_MHS','ASC');
     return $this->db->get('mahasiswa')->result();
   }
 
