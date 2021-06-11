@@ -34,8 +34,8 @@ class Mabsen extends CI_Model {
   }
 
   public function delete($id){
-    $query = $this->db->query("DELETE FROM absen WHERE ID_ABSEN = '".$id."'");
     $query = $this->db->query("DELETE FROM detail_absen WHERE ID_ABSEN = '".$id."'");
+    $query = $this->db->query("DELETE FROM absen WHERE ID_ABSEN = '".$id."'");
     return TRUE;
   }
 
