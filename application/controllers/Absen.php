@@ -35,4 +35,10 @@ class Absen extends CI_Controller {
 		$param['detail_note'] = $this->Mabsen->getNote($id);
 		$this->load->view('dashboard', $param);
 	}
+
+	public function delete($idAbsen){
+		$this->Mabsen->delete($idABsen);
+		$this->session->set_flashdata('success_message', 'Data presensi berhasil dihapus');
+		redirect('Absen');
+	}
 }
