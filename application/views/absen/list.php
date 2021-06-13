@@ -53,7 +53,7 @@
                 <tr>
                   <td class="text-left"><?php echo $absen->ID_ABSEN; ?></td>
                   <td class="text-left"><?php echo $absen->NAMA_DOSEN; ?></td>
-                  <td class="text-left"><?php echo $absen->NAMA_MATKUL." - ".$absen->KELAS_PERTEMUAN; ?></td>
+                  <td class="text-left"><?php echo $absen->NAMA_MATKUL." - ".$absen->KELAS_PRTMN; ?></td>
                   <td class="text-left"><?php echo $absen->TOPIK_ABSEN; ?></td>
                   <td class="text-left"><?php echo $absen->METODE_ABSEN; ?></td>
                   <td class="text-center"><?php echo $absen->TS_ABSEN; ?></td>
