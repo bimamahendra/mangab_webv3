@@ -38,11 +38,12 @@
           <table class="table table-striped table-borderless" id="newstable">
             <thead>
               <tr>
+                <th class="text-center">QR Code</th>
                 <th class="text-center">Dosen</th>
-                <th class="text-center">Mata Kuliah</th>
+                <th class="text-center">Pertemuan</th>
                 <th class="text-center">Topik</th>
                 <th class="text-center">Metode</th>
-                <th class="text-center">Status</th>
+                <th class="text-center">Waktu</th>
                 <th class="text-center" style="width: 50px">Detail</th>
               </tr>
             </thead>
@@ -50,8 +51,9 @@
               <?php $i = 1;
               foreach ($absen_list as $absen){ ?>
                 <tr>
+                  <td class="text-left"><?php echo $absen->ID_ABSEN; ?></td>
                   <td class="text-left"><?php echo $absen->NAMA_DOSEN; ?></td>
-                  <td class="text-left"><?php echo $absen->NAMA_MATKUL; ?></td>
+                  <td class="text-left"><?php echo $absen->NAMA_MATKUL." - ".$absen->KELAS_PERTEMUAN; ?></td>
                   <td class="text-left"><?php echo $absen->TOPIK_ABSEN; ?></td>
                   <td class="text-left"><?php echo $absen->METODE_ABSEN; ?></td>
                   <td class="text-center"><?php echo $absen->TS_ABSEN; ?></td>

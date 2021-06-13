@@ -85,22 +85,6 @@ class Absen extends CI_Controller {
         ->row();
         
         if($data->JENIS_ABSEN == 0){
-            // if($data->LONG_ABSEN == $longitudeMhs AND $data->LAT_ABSEN == $latitudeMhs)
-            // {
-            //     $this->db->query("UPDATE detail_absen 
-            //     SET STATUS_DETABSEN =".$statusAbsen.", 
-            //     TS_DETABSEN = '".$currentTimeStamp."' 
-            //     WHERE ID_ABSEN = '".$qrCode."' 
-            //     AND NRP_MHS = '".$nrp."'");
-        
-            //     if($this->db->affected_rows() > 0){
-            //         $response["error"] = false;
-            //         $response["message"] = "Attended";
-            //         $this->throw(200, $response);
-            //         return;
-            //     }       
-            // }
-            
             if($this->rangeCheck($longitudeMhs, $latitudeMhs, $data->LONG_ABSEN, $data->LAT_ABSEN) < 50){
                 $this->db->query("UPDATE detail_absen 
                 SET STATUS_DETABSEN =".$statusAbsen.", 
@@ -403,15 +387,6 @@ pertemuan.KODE_MATKUL,
                 $this->throw(200, $response);
                 return;
             }
-
-        //     $response["error"] = true;
-        //     $response["message"] = "Attendance is not found";
-        //     $this->throw(200, $response);
-        //     return;
-
-        // $response["error"] = true;
-        // $response["message"] = "QR Code format is not valid";
-        //  $this->throw(200, $response);
     }
 
     public function generate(){

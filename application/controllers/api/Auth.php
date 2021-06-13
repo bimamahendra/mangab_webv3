@@ -99,18 +99,6 @@ class Auth extends CI_Controller {
             $currentTime = round(microtime(true) * 1000);
             $isUnderLogoutPenalty = ($currentTime - $data->LAST_LOGOUT) < 15 * 60 * 1000;
 
-            // if($data->ID_DEVICE == $device_id){
-            //     $response["error"] = false;
-            //     $response["message"] = "Login sukses";
-            //     $response["type"] = "mahasiswa";
-            //     $response["no_induk"] = $data->NRP_MHS;
-            //     $response["nama"] = $data->NAMA_MHS;
-            //     $response["email"] = $data->EMAIL_MHS;
-            //     $response["status_password"] = $data->STATUS_PASS;
-            //     $this->throw(200, $response);
-            //     return;
-            // }
-
             if($isUnderLogoutPenalty && $data->ID_DEVICE != $device_id){
                 $response["error"] = true;
                 $response["message"] = "Account is under penalty, please login after 15 minutes";

@@ -6,7 +6,7 @@ class Mabsen extends CI_Model {
   }
 
   public function getAllAbsen(){
-    $query = $this->db->query("SELECT absen.ID_ABSEN, dosen.NAMA_DOSEN, matakuliah.NAMA_MATKUL, absen.TOPIK_ABSEN, absen.METODE_ABSEN, absen.TS_ABSEN, absen.STATUS_ABSEN FROM absen
+    $query = $this->db->query("SELECT absen.ID_ABSEN, dosen.NAMA_DOSEN, matakuliah.NAMA_MATKUL, pertemuan.KELAS_PERTEMUAN, absen.TOPIK_ABSEN, absen.METODE_ABSEN, absen.TS_ABSEN, absen.STATUS_ABSEN FROM absen
     JOIN jadwal ON absen.ID_JADWAL = jadwal.ID_JADWAL
     JOIN pertemuan ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
     JOIN matakuliah ON matakuliah.KODE_MATKUL = pertemuan.KODE_MATKUL
