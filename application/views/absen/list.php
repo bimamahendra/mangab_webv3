@@ -87,7 +87,8 @@
         <p id="absentitle"></p>
       </div>
       <div class="modal-footer"> 
-        <a href="<?php echo base_url() ?>Absen/delete/<?php echo $absen->ID_ABSEN?>" class="btn btn-danger">Delete</a>
+      
+        <a href="<?= base_url('Absen/delete/' . $absen->ID_ABSEN) ?>" class="btn btn-danger">Delete</a>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
       </div>
     </div>
