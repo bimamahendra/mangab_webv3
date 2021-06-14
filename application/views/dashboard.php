@@ -67,7 +67,6 @@
 	$(document).ready(function() {
 		$('#newstable').DataTable( {
 			"paging":   true,
-			"ordering": false,
 			"info":     false
 		});
 		$('#recap').DataTable( {
