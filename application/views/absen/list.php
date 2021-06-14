@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="table-responsive">
-          <table class="table table-striped table-borderless" id="newstable">
+          <table class="table table-striped table-borderless" id="absentable">
             <thead>
               <tr>
                 <th class="text-center">QR Code</th>
@@ -65,7 +65,7 @@
                   <td class="text-center">
                     <a href="<?= base_url('Absen/det_absen/' . $absen->ID_ABSEN) ?>"><i class="fa fa-bars text-secondary"></i></a>
                     <a href="#" data-toggle="modal" data-target="#ModalDelete" data-id="<?php echo $absen->ID_ABSEN; ?>"
-                        data-title="<?php echo $absen->ID_ABSEN; ?>"><i class="fa fa-trash text-danger"></i></a>
+                        data-title="<?php echo $absen->ID_ABSEN; ?>" class="mdl_delete"><i class="fa fa-trash text-danger"></i></a>
                   </td>
                 </tr>
               <?php $i++; } ?>
@@ -97,14 +97,20 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script>
-$('#ModalDelete').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget)
+// $('#ModalDelete').on('show.bs.modal', function (event) {
+//     console.log('Masuk')
+//     var button = $(event.relatedTarget)
+//     var absen_id = $(this).data('id')
+//     console.log(absen_id)
+//     var modal = $(this)
+//     var absen_title = button.data('title');
+//     document.getElementById('absentitle').innerHTML = absen_title;
+//     $('#confirm_delete').attr('href', '<?= base_url('Absen/delete/')?>'+absen_id)
+// })
+$('#absentable tbody').on('click', '.mdl_delete', function () {
+    console.log('Masuk')
     var absen_id = $(this).data('id')
     console.log(absen_id)
-    console.log(base)
-    var modal = $(this)
-    var absen_title = button.data('title');
-    document.getElementById('absentitle').innerHTML = absen_title;
     $('#confirm_delete').attr('href', '<?= base_url('Absen/delete/')?>'+absen_id)
 })
 </script>
