@@ -88,7 +88,8 @@
       </div>
       <div class="modal-footer"> 
       
-        <a href="<?= base_url('Absen/delete/' . $absen->ID_ABSEN) ?>" class="btn btn-danger">Delete</a>
+        <!-- <a href="<?= base_url('Absen/delete/' . $absen->ID_ABSEN) ?>" class="btn btn-danger">Delete</a> -->
+        <a id="confirm_delete" class="btn btn-danger">Delete</a>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
       </div>
     </div>
@@ -97,10 +98,10 @@
 <script>
 $('#ModalDelete').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
-    var absen_id = button.data('id')
+    var absen_id = $(this).data('id')
     var modal = $(this)
     var absen_title = button.data('title');
     document.getElementById('absentitle').innerHTML = absen_title;
-    modal.find('.modal-footer a').attr("href", "<?= base_url() ?>Absen/delete/" + absen_id)
+    $('#confirm_delete').attr('href', '<?= base_url('Absen/delete/')?>'+absen_id)
 })
 </script>
