@@ -99,6 +99,8 @@
 $('#ModalDelete').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
     var absen_id = $(this).data('id')
+    console.log(absen_id)
+    console.log(base)
     var modal = $(this)
     var absen_title = button.data('title');
     document.getElementById('absentitle').innerHTML = absen_title;
