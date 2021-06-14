@@ -51,7 +51,7 @@
                   <td class="text-center">
                     <a href="<?= base_url('Dosen/edit_dosen/' . $dosen->NIP_DOSEN) ?>"><i class="fa fa-pencil text-secondary"></i></a>
                     <a href="#" data-toggle="modal" data-target="#ModalDelete" data-id="<?php echo $dosen->NIP_DOSEN; ?>"
-                        data-title="<?php echo $dosen->NIP_DOSEN; ?>"><i class="fa fa-trash text-danger"></i></a>
+                        data-title="<?php echo $dosen->NIP_DOSEN; ?>" class="mdl_delete"><i class="fa fa-trash text-danger"></i></a>
                   </td>
                 </tr>
               <?php $i++; } ?>
@@ -73,19 +73,16 @@
         <p id="dosentitle"></p>
       </div>
       <div class="modal-footer"> 
-        <a href="<?php echo base_url() ?>Dosen/delete/<?php echo $dosen->NIP_DOSEN?>" class="btn btn-danger">Delete</a>
+      <a id="confirm_delete" class="btn btn-danger">Delete</a>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
       </div>
     </div>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script>
-$('#ModalDelete').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget)
-    var dosen_id = button.data('id')
-    var modal = $(this)
-    var dosen_title = button.data('title');
-    document.getElementById('dosentitle').innerHTML = dosen_title;
-    modal.find('.modal-footer a').attr("href", "<?= base_url() ?>Dosen/delete/" + dosen_id)
+$('#newstable tbody').on('click', '.mdl_delete', function () {
+    var absen_id = $(this).data('id')
+    $('#confirm_delete').attr('href', '<?= base_url('Dosen/delete/')?>'+absen_id)
 })
 </script>

@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="table-responsive">
-          <table class="table table-striped table-borderless" id="absentable">
+          <table class="table table-striped table-borderless" id="newstable">
             <thead>
               <tr>
                 <th class="text-center">QR Code</th>
@@ -107,10 +107,8 @@
 //     document.getElementById('absentitle').innerHTML = absen_title;
 //     $('#confirm_delete').attr('href', '<?= base_url('Absen/delete/')?>'+absen_id)
 // })
-$('#absentable tbody').on('click', '.mdl_delete', function () {
-    console.log('Masuk')
+$('#newstable tbody').on('click', '.mdl_delete', function () {
     var absen_id = $(this).data('id')
-    console.log(absen_id)
     $('#confirm_delete').attr('href', '<?= base_url('Absen/delete/')?>'+absen_id)
 })
 </script>

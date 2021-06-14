@@ -55,7 +55,7 @@
                   <td class="text-center">
                     <a href="<?= base_url('Mahasiswa/edit_mhs/' . $mhs->NRP_MHS) ?>"><i class="fa fa-pencil text-secondary"></i></a>
                     <a href="#" data-toggle="modal" data-target="#ModalDelete" data-id="<?php echo $mhs->NRP_MHS; ?>"
-                        data-title="<?php echo $mhs->NRP_MHS; ?>"><i class="fa fa-trash text-danger"></i></a>
+                        data-title="<?php echo $mhs->NRP_MHS; ?>" class="mdl_delete"><i class="fa fa-trash text-danger"></i></a>
                   </td>
                 </tr>
               <?php $i++; } ?>
@@ -77,19 +77,16 @@
         <p id="mhstitle"></p>
       </div>
       <div class="modal-footer"> 
-        <a href="<?php echo base_url() ?>Mahasiswa/delete/<?php echo $mhs->NRP_MHS?>" class="btn btn-danger">Delete</a>
+      <a id="confirm_delete" class="btn btn-danger">Delete</a>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
       </div>
     </div>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script>
-$('#ModalDelete').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget)
-    var mhs_id = button.data('id')
-    var modal = $(this)
-    var mhs_title = button.data('title');
-    document.getElementById('mhstitle').innerHTML = mhs_title;
-    modal.find('.modal-footer a').attr("href", "<?= base_url() ?>Mahasiswa/delete/" + mhs_id)
+$('#newstable tbody').on('click', '.mdl_delete', function () {
+    var absen_id = $(this).data('id')
+    $('#confirm_delete').attr('href', '<?= base_url('Mahasiswa/delete/')?>'+absen_id)
 })
 </script>
