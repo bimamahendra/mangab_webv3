@@ -59,7 +59,7 @@
                         $res = $cekkelas->cekstatabsen($row->ID_JADWAL);
                         echo '<a href="'.base_url("Generate/showqr/$res->ID_ABSEN").'" class="btn btn-sm btn-warning"><i class="fa fa-refresh"></i> Lanjutkan</a>';
                       }else{
-                        echo '<a href="#" onclick="getIDKelas('.$row->ID_JADWAL.')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a>';
+                        echo '<a href="#" onclick=\"getIDKelas('.$row->ID_JADWAL.')\" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a>';
                       }
                     ?>
                   </td>
