@@ -53,14 +53,14 @@
                   <td class="text-center"><?php echo $row->RUANG_PRTMN ?></td>
                   <td class="text-center">
                     <a href="<?php echo base_url('Generate/detail/'.$row->ID_JADWAL) ?>" class="btn btn-sm btn-danger"><i class="fa fa-bars"></i> Detail</a>
-                    <a href="#" onclick="getIDKelas('<?= $row->ID_JADWAL?>')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a>
+                    <!-- <a href="#" onclick="getIDKelas('<?= $row->ID_JADWAL?>')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a> -->
 
                     <?php if(($cekkelas->cekstatabsen($row->ID_JADWAL)) != NULL) {
                         $res = $cekkelas->cekstatabsen($row->ID_JADWAL);
                         echo '<a href="'.base_url("Generate/showqr/$res->ID_ABSEN").'" class="btn btn-sm btn-warning"><i class="fa fa-refresh"></i> Lanjutkan</a>';
-                      }else{
-                        echo '<a href="#" onclick=\"getIDKelas('.$row->ID_JADWAL.')\" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a>';
-                      }
+                      }else{?>
+                        <a href="#" onclick="getIDKelas('<?= $row->ID_JADWAL?>')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a>
+                      <?php }
                     ?>
                   </td>
                 </tr>
