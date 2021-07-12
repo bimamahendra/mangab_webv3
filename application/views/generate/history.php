@@ -20,7 +20,6 @@
                 <th class="text-center">Topik</th>
                 <th class="text-center">Metode</th>
                 <th class="text-center">Waktu</th>
-                <!-- <th class="text-center">Status</th> -->
               </tr>
             </thead>
             <tbody>
@@ -33,7 +32,6 @@
                   <td><?php echo $row->TOPIK_ABSEN ?></td>
                   <td><?php echo $row->METODE_ABSEN ?></td>
                   <td class="text-center"><?php echo $row->TS_ABSEN ?></td>
-                  <!-- <td class="text-center"><?php echo ($row->STATUS_ABSEN == 2) ? "<p class='btn btn-sm btn-success'>Terverifikasi</p>" : "<p class='btn btn-sm btn-danger'>Belum Verifikasi</p>" ?></td> -->
                 </tr>
               <?php $i++;} ?>
             </tbody>
