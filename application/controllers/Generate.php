@@ -54,7 +54,6 @@ class Generate extends CI_Controller {
 	    	"ID_ABSEN" 		=> $sixdigit,
 	    	"ID_JADWAL" 	=> $id,
 			"NIP_DOSEN"		=> $nip,
-			"PERTEMUAN_KE"	=> $this->pertemuanke($id),
 	    	"TOPIK_ABSEN"	=> $topik,
 			"METODE_ABSEN"	=> $topik,
 			"TS_ABSEN" 		=> $now,
@@ -165,14 +164,17 @@ class Generate extends CI_Controller {
 		$new = $this->input->post('new');
 		$confirm = $this->input->post('confirm');
 
+		$oldPass = hash('sha256', md5($old));
+		$newPass = hash('sha256', md5($confirm));
+
 		if($new != $confirm){
 			$this->session->set_flashdata('error_change', 'Password baru & Password konfirmasi tidak sama, silahkan ulangi');
 			redirect('Generate/changepw');
-		}else if($this->Mgenerate->cekpass($old)->num_rows()<= 0){
+		}else if($this->Mgenerate->cekpass($oldPass)->num_rows()<= 0){
 			$this->session->set_flashdata('error_change', 'Password lama yang anda masukan salah, silahkan ulangi');
 			redirect('Generate/changepw');
 		}else{
-			$change = $this->Mgenerate->changepass($confirm);
+			$change = $this->Mgenerate->changepass($newPass);
 			if($change){
 				$this->session->set_flashdata('success_change', 'Password berhasil diubah');
 				redirect('Generate/changepw');
