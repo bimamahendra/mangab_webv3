@@ -56,7 +56,7 @@ class Mgenerate extends CI_Model {
   }
 
   public function getkelas($qr){
-    return $this->db->query("SELECT * FROM mahasiswa JOIN detail_absen ON mahasiswa.NRP_MHS = detail_absen.GET_NRP WHERE detail_absen.ID_ABSEN = '".$qr."'")->result();
+    return $this->db->query("SELECT * FROM mahasiswa JOIN detail_absen ON mahasiswa.NRP_MHS = detail_absen.NRP_MHS WHERE detail_absen.ID_ABSEN = '".$qr."'")->result();
   }
 
   public function getjmlmhs($qr){
