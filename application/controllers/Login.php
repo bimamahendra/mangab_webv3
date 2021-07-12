@@ -24,8 +24,8 @@ class Login extends CI_Controller {
 
 		}
 
-		$pass = hash('sha256', md5($pass));
-		$auth = $this->Mlogin->auth($user, $pass);
+		$password = hash('sha256', md5($pass));
+		$auth = $this->Mlogin->auth($user, $password);
 
 		if($auth != null){
 			foreach($auth as $row){

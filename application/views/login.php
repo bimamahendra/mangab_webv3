@@ -30,7 +30,7 @@
                     <?php } ?>
                     <form action="<?php echo site_url('Login') ?>" method="post">
                         <div class="form-group"> 
-                            <input type="text" name="username" class="form-control" placeholder="Username">
+                            <input type="email" name="username" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" class="form-control" placeholder="Password">
