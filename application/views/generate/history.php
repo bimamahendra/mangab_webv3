@@ -14,22 +14,26 @@
             <thead>
               <tr>
                 <th class="text-center">No</th>
-                <th class="text-center">Nama Mata Kuliah  </th>
+                <th class="text-center">ID</th>
+                <th class="text-center">Mata Kuliah  </th>
                 <th class="text-center">Kelas</th>
                 <th class="text-center">Topik</th>
+                <th class="text-center">Metode</th>
                 <th class="text-center">Waktu</th>
-                <th class="text-center">Status</th>
+                <!-- <th class="text-center">Status</th> -->
               </tr>
             </thead>
             <tbody>
               <?php $i = 1; foreach ($listhistory as $row) {?>
                 <tr>
                   <td class="text-center"><?php echo $i ?></td>
+                  <td><?php echo $row->ID_ABSEN ?></td>
                   <td><?php echo $row->NAMA_MATKUL ?></td>
-                  <td class="text-center"><?php echo $row->KELAS_MATKUL ?></td>
-                  <td><?php echo $row->TOPIK ?></td>
+                  <td class="text-center"><?php echo $row->KELAS_PRTMN ?></td>
+                  <td><?php echo $row->TOPIK_ABSEN ?></td>
+                  <td><?php echo $row->METODE_ABSEN ?></td>
                   <td class="text-center"><?php echo $row->TS_ABSEN ?></td>
-                  <td class="text-center"><?php echo ($row->STATUS_ABSEN == 2) ? "<p class='btn btn-sm btn-success'>Terverifikasi</p>" : "<p class='btn btn-sm btn-danger'>Belum Verifikasi</p>" ?></td>
+                  <!-- <td class="text-center"><?php echo ($row->STATUS_ABSEN == 2) ? "<p class='btn btn-sm btn-success'>Terverifikasi</p>" : "<p class='btn btn-sm btn-danger'>Belum Verifikasi</p>" ?></td> -->
                 </tr>
               <?php $i++;} ?>
             </tbody>

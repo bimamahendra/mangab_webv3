@@ -101,7 +101,13 @@ class Mgenerate extends CI_Model {
   }
 
   public function gethistory($nip){
-    $query = $this->db->query("SELECT m.NAMA_MATKUL, m.KELAS_MATKUL, a.TOPIK, a.TS_ABSEN, a.STATUS_ABSEN FROM absen a JOIN matkul m ON a.ID_MATKUL = m.ID_MATKUL WHERE m.NIP_DOSEN = '".$nip."'");
+    $query = $this->db->query("SELECT absen.ID_ABSEN, matakuliah.NAMA_MATKUL, pertemuan.KELAS_PRTMN, absen.TOPIK_ABSEN, absen.METODE_ABSEN, absen.TS_ABSEN, absen.STATUS_ABSEN 
+    FROM absen
+    JOIN jadwal ON absen.ID_JADWAL = jadwal.ID_JADWAL
+    JOIN pertemuan ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
+    JOIN matakuliah ON matakuliah.KODE_MATKUL = pertemuan.KODE_MATKUL
+    JOIN pengampu ON pengampu.ID_PRTMN = pertemuan.ID_PRTMN
+    WHERE pengampu.NIP_DOSEN = '".$nip."' ORDER BY (absen.TS_ABSEN) DESC");
     return $query->result();
   }
 
