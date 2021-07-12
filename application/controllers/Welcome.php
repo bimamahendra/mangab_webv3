@@ -18,6 +18,7 @@ class Welcome extends CI_Controller {
 				$param['main_content'] = 'generate/dosen';
 				$param['page_title'] = 'Selamat Mengajar,';
 				$param['dataout'] = $this->Mgenerate->stats($nip);
+				$param['sumpertemuan'] = $this->Mgenerate;
 				$this->load->view('dashboard',$param);
 			}else{
 				$param['main_content'] = 'stats';

@@ -18,6 +18,8 @@
                 <div class="card-header text-white bg-success" ><?php echo $row->KODE_MATKUL?></div>
                 <div class="card-body">
                     <div class="card-title"><h4><?php echo $row->NAMA_MATKUL ?></h4> <h3> | <?php echo $row->KELAS_PRTMN ?> </h3></div>
+                    <br>
+                    <div class="card-title"><h3><?php echo $sumpertemuan->sumJadwal($row->ID_JADWAL) ?> </h3></div>
                 </div>
             </div>
         </div>
