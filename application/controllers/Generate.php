@@ -71,7 +71,7 @@ class Generate extends CI_Controller {
 	 		foreach($getmhs as $mhs){
 				$dataDetailAbsen["ID_DETABSEN"] = $this->serial_meeting();
 	 			$dataDetailAbsen["ID_ABSEN"] = $sixdigit;
-				$dataDetailAbsen["GET_NRP"] = $mhs["NRP_MHS"];
+				$dataDetailAbsen["NRP_MHS"] = $mhs["NRP_MHS"];
 				$dataDetailAbsen["STATUS_DETABSEN"] = 0;
 				$dataDetailAbsen["TS_DETABSEN"] = null;
 
