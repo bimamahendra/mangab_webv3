@@ -59,10 +59,10 @@
                         $res = $cekkelas->cekstatabsen($row->ID_JADWAL);
                         $tag = 'href="'.base_url("Generate/showqr/$res->ID_ABSEN").'" class="btn btn-sm btn-warning"><i class="fa fa-refresh"></i> Lanjutkan';
                       }else{
-                        $tag = 'href="#" onclick="getIDKelas('.$row->JADWAL.')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat Kelas';
+                        $tag = 'href="#" onclick="getIDKelas('.$row->ID_JADWAL.')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat Kelas';
                       }
                     ?>
-                    <a <?php echo $tag; ?> </a>
+                    <a <?php echo $tag; ?>></a>
                   </td>
                 </tr>
               <?php $i++;} ?>
