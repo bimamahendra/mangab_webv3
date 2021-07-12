@@ -85,7 +85,7 @@ class Mgenerate extends CI_Model {
   }
 
   public function getdetail($id){
-    $this->db->where('ID_MATKUL', $id);
+    $this->db->where('ID_JADWAL', $id);
     $this->db->order_by('TS_ABSEN','DESC');
     $this->db->from('absen');
     $query = $this->db->get();
@@ -127,7 +127,7 @@ class Mgenerate extends CI_Model {
   }
 
   public function sumJadwal($id){
-    return $this->db->get_where('absen', array('ID_JADWAL' => $id))->num_rows();
+    return $this->db->get_where('absen', array('ID_JADWAL' => $id, 'STATUS_ABSEN' => 1))->num_rows();
   }
 
 }
