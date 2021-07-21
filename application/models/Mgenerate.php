@@ -126,6 +126,7 @@ class Mgenerate extends CI_Model {
   	return TRUE;
   }
 
+    //test
   public function sumJadwal($id){
     return $this->db->get_where('absen', array('ID_JADWAL' => $id, 'STATUS_ABSEN' => 1))->num_rows();
   }
