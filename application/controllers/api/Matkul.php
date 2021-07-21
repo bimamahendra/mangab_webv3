@@ -20,7 +20,7 @@ class Matkul extends CI_Controller {
         $data = $this->db->query("SELECT pertemuan.KODE_MATKUL,
 				matakuliah.NAMA_MATKUL,
 				pertemuan.KELAS_PRTMN,
-				pertemuan.RUANG_PRTMN,
+				jadwal.RUANG_KELAS,
 				jadwal.ID_JADWAL,
 				jadwal.HARI_KELAS,
 				DATE_FORMAT(jadwal.WAKTU_AWAL, '%H:%i') as WAKTU_AWAL,
