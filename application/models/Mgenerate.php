@@ -107,7 +107,7 @@ class Mgenerate extends CI_Model {
     JOIN pertemuan ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
     JOIN matakuliah ON matakuliah.KODE_MATKUL = pertemuan.KODE_MATKUL
     JOIN pengampu ON pengampu.ID_PRTMN = pertemuan.ID_PRTMN
-    WHERE pengampu.NIP_DOSEN = '".$nip."' ORDER BY (absen.TS_ABSEN) DESC");
+    WHERE pengampu.NIP_DOSEN = '".$nip."' AND absen.STATUS_ABSEN = 1 ORDER BY (absen.TS_ABSEN) DESC");
     return $query->result();
   }
 
