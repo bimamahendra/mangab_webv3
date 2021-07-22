@@ -33,7 +33,7 @@
                   <td><?php echo $row->TOPIK_ABSEN ?></td>
                   <td><?php echo $row->METODE_ABSEN ?></td>
                   <td class="text-center"><?php echo $row->TS_ABSEN ?></td>
-                  <a href="<?= base_url('Generate/detail/' . $absen->ID_ABSEN) ?>"><i class="fa fa-eye text-secondary"></i></a>
+                  <a href="<?= base_url('Generate/detail/' . $row->ID_ABSEN) ?>"><i class="fa fa-eye text-secondary"></i></a>
                 </tr>
               <?php $i++;} ?>
             </tbody>
