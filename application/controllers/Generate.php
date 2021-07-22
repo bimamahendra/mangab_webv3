@@ -142,8 +142,8 @@ class Generate extends CI_Controller {
 
 	public function detail($id){
 		$param['main_content'] = 'generate/detaillist';
-		$param['datadet'] = $this->Mgenerate->getdetail($id);
-		$param['matkuldet'] = $this->Mgenerate->getnamamatkul($id);
+		$param['detail_list'] = $this->Mabsen->getAbsen($id);
+		$param['detail_note'] = $this->Mabsen->getNote($id);
 		$this->load->view('dashboard', $param);
 	}
 
