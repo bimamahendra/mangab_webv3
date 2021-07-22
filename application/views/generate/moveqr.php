@@ -155,7 +155,7 @@
             }
 
     $("#id").val(id_kelas);
-    $("#pertemuan").innetHTML = pertemuanke;
+    $("#pertemuan").innetHTML = pertemuanke + 1;
     $("#ModalTopic").modal("show");
   }
 </script>
