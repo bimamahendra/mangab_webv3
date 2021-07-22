@@ -15,11 +15,11 @@ class Mgenerate extends CI_Model {
   }
 
   public function getAllMatkulByNIP($nip){
-  	$query = $this->db->query("SELECT * FROM pengampu
+  	$query = $this->db->query("SELECT *, COUNT(ID_JADWAL) AS PERTEMUANKE FROM pengampu
     JOIN pertemuan ON pengampu.ID_PRTMN = pertemuan.ID_PRTMN
     JOIN jadwal ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
     JOIN matakuliah ON pertemuan.KODE_MATKUL = matakuliah.KODE_MATKUL
-    WHERE pengampu.NIP_DOSEN = '".$nip."'");
+    WHERE pengampu.NIP_DOSEN = '".$nip."' GROUP BY ID_JADWAL");
     return $query->result();
   }
 

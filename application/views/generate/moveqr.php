@@ -58,7 +58,7 @@
                         $res = $cekkelas->cekstatabsen($row->ID_JADWAL);
                         echo '<a href="'.base_url("Generate/showqr/$res->ID_ABSEN").'" class="btn btn-sm btn-warning"><i class="fa fa-refresh"></i> Lanjut</a>';
                       }else{?>
-                        <a href="#" onclick="getIDKelas('<?= $row->ID_JADWAL?>')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a>
+                        <a href="#" onclick="getIDKelas('<?= $row->ID_JADWAL?>,<?= $row->PERTEMUANKE?>')" class="btn btn-sm btn-success"><i class="fa fa-pencil"></i> Buat</a>
                       <?php }
                     ?>
                   </td>
@@ -83,6 +83,10 @@
 
       <div class="modal-body">
           <div class="md-form">
+          <i class="fa fa-thumb-tack text-secondary"></i>
+            <label data-error="wrong" data-success="right" for="defaultForm-room">Pertemuan ke: </label>
+            <label data-error="wrong" data-success="right" for="defaultForm-room" id="pertemuan"></label>
+            <br>
             <i class="fa fa-thumb-tack text-secondary"></i>
             <label data-error="wrong" data-success="right" for="defaultForm-room">Jenis Kelas</label>
             <br>
@@ -142,7 +146,7 @@
     }
   }
 
-  function getIDKelas(id_kelas){
+  function getIDKelas(id_kelas,pertemuanke){
     if(navigator.geolocation){
       var options = {timeout:60000};
                navigator.geolocation.getCurrentPosition(setLoc, errorHandler, options);
@@ -151,6 +155,7 @@
             }
 
     $("#id").val(id_kelas);
+    $("#pertemuan").innetHTML = pertemuanke;
     $("#ModalTopic").modal("show");
   }
 </script>
