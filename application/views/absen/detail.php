@@ -31,28 +31,28 @@
         <?php foreach ($detail_note as $note) {?>
           <tr>
             <th class="col-md-2">ID Absen</th>
-            <td>:</td>
-            <td class="col-md-3"><?php echo $note->ID_ABSEN;?></td>
+            <td>: </td>
+            <td><?php echo $note->ID_ABSEN;?></td>
           </tr>
           <tr>
             <th class="col-md-2">Kelas</th>
-            <td>:</td>
-            <td class="col-md-3"><?php echo $note->NAMA_MATKUL." - ".$note->KELAS_PRTMN;?></td>
+            <td>: </td>
+            <td><?php echo $note->NAMA_MATKUL." - ".$note->KELAS_PRTMN;?></td>
           </tr>
           <tr>
             <th class="col-md-2">Topik</th>
-            <td>:</td>
-            <td class="col-md-3"><?php echo $note->TOPIK_ABSEN;;?></td>
+            <td>: </td>
+            <td><?php echo $note->TOPIK_ABSEN;;?></td>
           </tr>
           <tr>
             <th class="col-md-2">Metode</th>
-            <td>:</td>
-            <td class="col-md-3"><?php echo $note->METODE_ABSEN;?></td>
+            <td>: </td>
+            <td><?php echo $note->METODE_ABSEN;?></td>
           </tr>
           <tr>
             <th class="col-md-2">Waktu</th>
-            <td>:</td>
-            <td class="col-md-3"><?php echo $note->TS_ABSEN;?></td>
+            <td>: </td>
+            <td><?php echo $note->TS_ABSEN;?></td>
           </tr>
           <?php }?>
         </table>
