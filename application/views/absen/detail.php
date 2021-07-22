@@ -23,13 +23,43 @@
   </div>
   <?php } ?>
 </div>
-<!-- <div class="py-0">
+<div class="py-0">
   <div class="container">
     <div class="row">
-      <div class="col-md-12"><a class="btn btn-success" href="<?php echo base_url('Dosen/add_detail'); ?>"><i class="fa fa-plus"></i>&ensp;Tambah Dosen</a></div>
+      <div class="col-md-12">
+        <table>
+        <?php foreach ($detail_note as $note) {?>
+          <tr>
+            <th>ID Absen</th>
+            <td>:</td>
+            <td><?php echo $note->ID_ABSEN;?></td>
+          </tr>
+          <tr>
+            <th>Kelas</th>
+            <td>:</td>
+            <td><?php echo $note->NAMA_MATKUL." - ".$note->KELAS_PRTMN;?></td>
+          </tr>
+          <tr>
+            <th>Topik</th>
+            <td>:</td>
+            <td><?php echo $note->TOPIK_ABSEN;;?></td>
+          </tr>
+          <tr>
+            <th>Metode</th>
+            <td>:</td>
+            <td><?php echo $note->METODE_ABSEN;?></td>
+          </tr>
+          <tr>
+            <th>Waktu</th>
+            <td>:</td>
+            <td><?php echo $note->TS_ABSEN;?></td>
+          </tr>
+          <?php }?>
+        </table>
+      </div>
     </div>
   </div>
-</div> -->
+</div>
 <div class="py-4">
   <div class="container">
     <div class="row">

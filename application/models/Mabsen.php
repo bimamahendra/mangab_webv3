@@ -29,7 +29,10 @@ class Mabsen extends CI_Model {
   }
 
   public function getNote($id){
-    $query = $this->db->query("SELECT NOTE_ABSEN FROM absen WHERE ID_ABSEN = '".$id."'");
+    $query = $this->db->query("SELECT absen.ID_ABSEN, matakuliah.NAMA_MATKUL, pertemuan.KELAS_PRTMN, absen.TOPIK_ABSEN, absen.METODE_ABSEN, absen.TS_ABSEN, absen.NOTE_ABSEN FROM absen
+    JOIN jadwal ON absen.ID_JADWAL = jadwal.ID_JADWAL
+    JOIN pertemuan ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
+    JOIN matakuliah ON matakuliah.KODE_MATKUL = pertemuan.KODE_MATKUL WHERE absen.ID_ABSEN = '".$id."'");
     return $query->result();
   }
 
