@@ -85,7 +85,7 @@
           <div class="md-form">
           <i class="fa fa-thumb-tack text-secondary"></i>
             <label data-error="wrong" data-success="right" for="defaultForm-room">Pertemuan ke: </label>
-            <label data-error="wrong" data-success="right" for="defaultForm-room" id="pertemuan"></label>
+            <input type="text" id="pertemuan" name="metode" class="form-control validate">
             <br>
             <i class="fa fa-thumb-tack text-secondary"></i>
             <label data-error="wrong" data-success="right" for="defaultForm-room">Jenis Kelas</label>
@@ -155,7 +155,7 @@
             }
 
     $("#id").val(id_kelas);
-    $("#pertemuan").innetHTML = pertemuanke + 1;
+    $("#pertemuan").val(pertemuanke);
     $("#ModalTopic").modal("show");
   }
 </script>
