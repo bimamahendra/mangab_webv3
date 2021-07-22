@@ -48,8 +48,8 @@
       <div class="form-group row">
         <label for="reset" class="col-2 col-form-label">Reset Konfigurasi</label>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" name="reset">
-          <label class="form-check-label"> <b>Note :</b> Data Device, dan Login akan dihapus ulang</label>
+          <input class="form-check-input" type="checkbox" name="reset" id="reset">
+          <label for="reset" class="form-check-label"> <b>Note :</b> Data Device, dan Login akan dihapus ulang</label>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Ubah Data</button>
