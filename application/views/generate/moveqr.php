@@ -50,7 +50,7 @@
                   <td class="text-center"><?php echo $row->KELAS_PRTMN ?></td>
                   <td class="text-center"><?php echo $row->HARI_KELAS ?></td>
                   <td class="text-center"><?php echo date("H:i", strtotime($row->WAKTU_AWAL)).' - '.date("H:i", strtotime($row->WAKTU_AKHIR)) ?></td>
-                  <td class="text-center"><?php echo $row->RUANG_PRTMN ?></td>
+                  <td class="text-center"><?php echo $row->RUANG_KELAS ?></td>
                   <td class="text-center">
                     <!-- <a href="<?php echo base_url('Generate/detail/'.$row->ID_JADWAL) ?>" class="btn btn-sm btn-danger"><i class="fa fa-bars"></i> Detail</a> -->
 
