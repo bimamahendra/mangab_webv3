@@ -85,7 +85,7 @@
           <div class="md-form">
           <i class="fa fa-thumb-tack text-secondary"></i>
             <label data-error="wrong" data-success="right" for="defaultForm-room">Pertemuan ke: </label>
-            <input type="text" id="pertemuan" name="metode" class="form-control validate">
+            <label for="pertemuan" id="pertemuan"></label>
             <br>
             <i class="fa fa-thumb-tack text-secondary"></i>
             <label data-error="wrong" data-success="right" for="defaultForm-room">Jenis Kelas</label>
