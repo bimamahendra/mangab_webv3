@@ -10,7 +10,7 @@ class Mabsen extends CI_Model {
     JOIN jadwal ON absen.ID_JADWAL = jadwal.ID_JADWAL
     JOIN pertemuan ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
     JOIN matakuliah ON matakuliah.KODE_MATKUL = pertemuan.KODE_MATKUL
-    JOIN dosen ON dosen.NIP_DOSEN = absen.NIP_DOSEN ORDER BY (absen.TS_ABSEN) DESC");
+    JOIN dosen ON dosen.NIP_DOSEN = absen.NIP_DOSEN WHERE absen.STATUS_ABSEN = 1 ORDER BY (absen.TS_ABSEN) DESC");
     return $query->result();
   }
 

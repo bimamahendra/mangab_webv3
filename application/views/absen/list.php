@@ -38,7 +38,7 @@
           <table class="table table-striped table-borderless" id="newstable">
             <thead>
               <tr>
-                <th class="text-center">QR Code</th>
+                <th class="text-center">ID</th>
                 <th class="text-center">Dosen</th>
                 <th class="text-center">Pertemuan</th>
                 <th class="text-center">Topik</th>
