@@ -28,6 +28,11 @@
     <div class="row">
       <div class="col-md-12">
         <table>
+          <tr>
+            <th class="col-md-2">Pertemuan</th>
+            <td>: </td>
+            <td><?php echo $pertemuanke;?></td>
+          </tr>
         <?php foreach ($detail_note as $note) {?>
           <tr>
             <th class="col-md-2">ID Absen</th>

@@ -115,6 +115,7 @@ class Generate extends CI_Controller {
 	public function showqr($qr){
 		$param['main_content'] = 'generate/showqr';
 		$param['uniqcode'] = $qr;
+		$param['pertemuanke'] = $this->pertemuanke($qr);
 		$param['datakelas'] = $this->Mgenerate->getkelas($qr);
 		$param['detail_note'] = $this->Mabsen->getNote($qr);
 		$this->load->view('dashboard', $param);
@@ -144,6 +145,7 @@ class Generate extends CI_Controller {
 
 	public function detail($id){
 		$param['main_content'] = 'generate/detaillist';
+		$param['pertemuanke'] = $this->pertemuanke($id);
 		$param['detail_list'] = $this->Mabsen->getAbsen($id);
 		$param['detail_note'] = $this->Mabsen->getNote($id);
 		$this->load->view('dashboard', $param);
@@ -188,7 +190,8 @@ class Generate extends CI_Controller {
 	}
 
 	public function pertemuanke($id){
-		$cekrow = $this->Mgenerate->sumJadwal($id);
+		$getjadwal = $this->db->query("SELECT ID_JADWAL FROM absen WHERE ID_ABSEN = '".$id."'")->row();
+		$cekrow = $this->Mgenerate->sumJadwal($getjadwal->ID_JADWAL);
 
 		return $cekrow + 1;
 	}
