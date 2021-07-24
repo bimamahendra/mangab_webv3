@@ -96,12 +96,12 @@
             </div>
             <br><br>
             <i class="fa fa-thumb-tack text-secondary"></i>
-            <label data-error="wrong" data-success="right" for="defaultForm-room" required>Metode</label>
-            <input type="text" id="metode" name="metode" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="defaultForm-room">Metode</label>
+            <input type="text" id="metode" name="metode" class="form-control validate" required>
             <br>
             <i class="fa fa-thumb-tack text-secondary"></i>
             <label data-error="wrong" data-success="right" for="defaultForm-room" required>Topik Kelas</label>
-            <input type="text" id="topik" name="topik" class="form-control validate">
+            <input type="text" id="topik" name="topik" class="form-control validate" required>
 
             <input type="hidden" id="id" name="id">
             <input type="hidden" id="getLat" name="getLat">
