@@ -6,6 +6,7 @@ class Generate extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('Mgenerate');
+		$this->load->model('Mabsen');
 		$this->load->library('ciqrcode');
 		$this->load->helper('string');
 	}
