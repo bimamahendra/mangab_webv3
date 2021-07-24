@@ -115,6 +115,7 @@ class Generate extends CI_Controller {
 		$param['main_content'] = 'generate/showqr';
 		$param['uniqcode'] = $qr;
 		$param['datakelas'] = $this->Mgenerate->getkelas($qr);
+		$param['detail_note'] = $this->Mabsen->getNote($qr);
 		$this->load->view('dashboard', $param);
 	}
 
