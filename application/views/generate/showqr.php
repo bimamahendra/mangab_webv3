@@ -35,7 +35,7 @@
 <div class="py-1">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 text-center" style="margin-top: 15px"><h5>Scan QR Code dibawah ini untuk dapat mengikuti perkuliahan</h5></div>
+      <div class="col-md-12 text-center" style="margin-top: 15px"><h5>Scan QR Code dibawah ini untuk melakukan presensi</h5></div>
       <button onclick="btnunik()" class="text-center btn-sm btn-success" style="margin: 0 auto; margin-bottom: 10px">Kode Unik</button>
     </div>
     <div class="row" style="display: none" id="unik">
@@ -72,7 +72,11 @@
                   <td class="text-center"><?php echo $i ?></td>
                   <td class="text-center"><?php echo $mhs->NRP_MHS; ?></td>
                   <td class="text-left"><?php echo $mhs->NAMA_MHS ?></td>
-                  <td class="text-center"><?php echo ($mhs->STATUS_DETABSEN == 0) ? "Alpa" : "Hadir"  ?></td>
+                  <?php if($mhs->STATUS_DETABSEN == 0){ ?>
+                    <td class="text-center"><a class="btn btn-sm btn-danger text-white">Alpha</a></td>
+                  <?php } else if($mhs->STATUS_DETABSEN == 1) {?>
+                    <td class="text-center"><a class="btn btn-sm btn-success text-white">Hadir</a></td>
+                  <?php }?>
                 </tr>
               <?php $i++; } ?>
             </tbody>

@@ -34,7 +34,6 @@
                 <th class="text-center">NIP</th>
                 <th class="text-center">Nama</th>
                 <th class="text-center">Email</th>
-                <th class="text-center">Status Login</th>
                 <th class="text-center">Status Pass</th>
                 <th class="text-center" style="width: 50px">Aksi</th>
               </tr>
@@ -46,7 +45,6 @@
                   <td class="text-center"><?php echo $dosen->NIP_DOSEN; ?></td>
                   <td class="text-left"><?php echo $dosen->NAMA_DOSEN ?></td>
                   <td class="text-left"><?php echo $dosen->EMAIL_DOSEN; ?></td>
-                  <td class="text-center"><?php echo isset ($dosen->STATUS_LOGIN) ? $dosen->STATUS_LOGIN : "0" ?></td>
                   <td class="text-center"><?php echo isset ($dosen->STATUS_PASS) ? $dosen->STATUS_PASS : "0" ?></td>
                   <td class="text-center">
                     <a href="<?= base_url('Dosen/edit_dosen/' . $dosen->NIP_DOSEN) ?>"><i class="fa fa-pencil text-secondary"></i></a>
