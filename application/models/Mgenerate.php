@@ -77,7 +77,7 @@ class Mgenerate extends CI_Model {
   }
 
   public function updatenote($note, $qr){
-    $this->db->set('NOTE', $note);
+    $this->db->set('NOTE_ABSEN', $note);
     $this->db->set('STATUS_ABSEN', 1);
     $this->db->where('ID_ABSEN', $qr);
     $this->db->update('absen');
