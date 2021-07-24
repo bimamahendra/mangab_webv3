@@ -87,7 +87,7 @@
             <label data-error="wrong" data-success="right" for="defaultForm-room">Jenis Kelas</label>
             <br>
             <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="radioJenis" id="inlineRadio1" value="0">
+                  <input class="form-check-input" type="radio" name="radioJenis" id="inlineRadio1" value="0" required>
                   <label class="form-check-label" for="inlineRadio1">Offline</label>
             </div>
             <div class="form-check form-check-inline">
@@ -96,11 +96,11 @@
             </div>
             <br><br>
             <i class="fa fa-thumb-tack text-secondary"></i>
-            <label data-error="wrong" data-success="right" for="defaultForm-room">Metode</label>
+            <label data-error="wrong" data-success="right" for="defaultForm-room" required>Metode</label>
             <input type="text" id="metode" name="metode" class="form-control validate">
             <br>
             <i class="fa fa-thumb-tack text-secondary"></i>
-            <label data-error="wrong" data-success="right" for="defaultForm-room">Topik Kelas</label>
+            <label data-error="wrong" data-success="right" for="defaultForm-room" required>Topik Kelas</label>
             <input type="text" id="topik" name="topik" class="form-control validate">
 
             <input type="hidden" id="id" name="id">
