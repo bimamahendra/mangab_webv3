@@ -140,8 +140,7 @@ class Generate extends CI_Controller {
 
 		$note = $this->input->post('catatan');
 		$updatenote = $this->Mgenerate->updatenote($note, $qr);
-			print_r($note);
-		// redirect('Generate/absenlist');
+		redirect('Generate/absenlist');
 	}
 
 	public function detail($id){
