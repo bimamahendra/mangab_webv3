@@ -130,13 +130,13 @@ class Generate extends CI_Controller {
 	}
 
 	public function confirm($qr){
-		// $jml = $this->Mgenerate->getjmlmhs($qr);
-		// for($i = 1; $i <= $jml; $i++){
-		// 		$nrp = $this->input->post('nrp'.$i);
-		// 		$stat = $this->input->post('radion'.$i);
+		$jml = $this->Mgenerate->getjmlmhs($qr);
+		for($i = 1; $i <= $jml; $i++){
+				$nrp = $this->input->post('nrp'.$i);
+				$stat = $this->input->post('radion'.$i);
 
-		// 	$this->Mgenerate->updaterekap($qr, $nrp, $stat);
-		// }
+			$this->Mgenerate->updaterekap($qr, $nrp, $stat);
+		}
 
 		$note = $this->input->post('catatan');
 		$updatenote = $this->Mgenerate->updatenote($note, $qr);
