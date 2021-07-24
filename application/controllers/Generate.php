@@ -26,6 +26,7 @@ class Generate extends CI_Controller {
 		$sixdigit 	= $this->sixdigit();
 		$id 		= $this->input->post('id');
 		$topik 		= $this->input->post('topik');
+		$metode		= $this->input->post('metode');
 		$jenis 		= $this->input->post('radioJenis');
 		$lat		= $this->input->post('getLat');
 		$long		= $this->input->post('getLong');
@@ -56,7 +57,7 @@ class Generate extends CI_Controller {
 	    	"ID_JADWAL" 	=> $id,
 			"NIP_DOSEN"		=> $nip,
 	    	"TOPIK_ABSEN"	=> $topik,
-			"METODE_ABSEN"	=> $topik,
+			"METODE_ABSEN"	=> $metode,
 			"TS_ABSEN" 		=> $now,
 			"JENIS_ABSEN" 	=> $jenis,
 			"LONG_ABSEN" 	=> $long,
