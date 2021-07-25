@@ -237,8 +237,7 @@ pertemuan.KODE_MATKUL,
                                 jadwal.HARI_KELAS,
                                 DATE_FORMAT(jadwal.WAKTU_AWAL,'%H:%i') as WAKTU_AWAL,
                                 DATE_FORMAT(jadwal.WAKTU_AKHIR, '%H:%i') as WAKTU_AKHIR,
-                                
-                                COUNT(absen.ID_ABSEN) AS PERTEMUANKE
+                                COUNT(absen.ID_JADWAL) AS PERTEMUANKE
                         FROM pengampu
                 JOIN pertemuan ON pengampu.ID_PRTMN = pertemuan.ID_PRTMN
                 JOIN jadwal ON pertemuan.ID_PRTMN = jadwal.ID_PRTMN
