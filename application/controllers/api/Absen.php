@@ -326,7 +326,7 @@ pertemuan.KODE_MATKUL,
                             SUM(if(detail_absen.STATUS_DETABSEN = 1, 1, 0)) AS hadir,
                             SUM(if(detail_absen.STATUS_DETABSEN = 2, 1, 0)) AS sakit,
                             SUM(if(detail_absen.STATUS_DETABSEN = 3, 1, 0)) AS izin,
-                            SUM(detail_absen.STATUS_DETABSEN) AS pertemuanke
+                            COUNT(absen.ID_JADWAL) AS pertemuanke
                             FROM detail_absen
                     	JOIN absen ON detail_absen.ID_ABSEN = absen.ID_ABSEN
                         JOIN jadwal ON absen.ID_JADWAL = jadwal.ID_JADWAL
