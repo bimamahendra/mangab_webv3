@@ -139,6 +139,11 @@ class Absen extends CI_Controller {
         // $km = $r * $c; 
         // //echo ' '.$km; 
         // return $km; 
+
+        if($longitudeMhs == 0 AND $latitudeMhs == 0){
+            $longitudeMhs = $longitudeLec;
+            $latitudeMhs = $latitudeLec;
+        }
         
         $theta = $longitudeMhs - $longitudeLec;
         $dist = (sin(deg2rad($latitudeMhs)) * sin(deg2rad($latitudeLec))) + (cos(deg2rad($latitudeMhs)) * cos(deg2rad($latitudeLec)) * cos(deg2rad($theta)));
